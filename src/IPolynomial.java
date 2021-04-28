@@ -1,14 +1,12 @@
-package polynomial;
-
 /**
  * The interface that represents the polynomial class
  */
-public interface Polynomial {
+public interface IPolynomial {
   /**
    * Adds a Term to the Polynomial.
    * Throws an exception if negative power is passed.
    */
-  Polynomial addTerm(double coefficient, int power) throws IllegalArgumentException;
+  IPolynomial addTerm(double coefficient, int power) throws IllegalArgumentException;
 
 
   /**
@@ -16,7 +14,7 @@ public interface Polynomial {
    *
    * @return
    */
-  Polynomial removeTerm(int power);
+  IPolynomial removeTerm(int power);
 
   /**
    * Gets the Highest exponent in the polynomial.
@@ -48,7 +46,7 @@ public interface Polynomial {
    * @param otherPoly polynomial of same concrete class as caller.
    * @return
    */
-  Polynomial add(Polynomial otherPoly) throws IllegalArgumentException;
+  IPolynomial add(IPolynomial otherPoly) throws IllegalArgumentException;
   //implemented by adding polynomial to list and sorting.
   //if powers are the same, add coefficients and add new poly to list
   //if powers are different, simply add poly to list.

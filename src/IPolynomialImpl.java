@@ -1,16 +1,16 @@
-package polynomial;
+public class IPolynomialImpl implements IPolynomial {
 
+  private IPolynomial head;
 
-public class PolynomialImpl implements Polynomial {
-
-  private Polynomial head;
-
-  public PolynomialImpl() {
+  public IPolynomialImpl() {
     head = new ConstantNode(0);
   }
 
-
-  public PolynomialImpl(String toBeParsed) {
+  /**
+   * Constructor for the IPolynomialImpl Class.
+   * @param toBeParsed String to be parsed.
+   */
+  public IPolynomialImpl(String toBeParsed) {
 
     this.head = new ConstantNode(0);
     if (!toBeParsed.isEmpty()) {
@@ -44,7 +44,7 @@ public class PolynomialImpl implements Polynomial {
 
 
   @Override
-  public Polynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
+  public IPolynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
 
     if (power < 0) {
       throw new IllegalArgumentException("Power cannot be less than zero");
@@ -57,7 +57,7 @@ public class PolynomialImpl implements Polynomial {
 
 
   @Override
-  public Polynomial removeTerm(int power) {
+  public IPolynomial removeTerm(int power) {
     this.head = head.removeTerm(power);
     return this;
   }
@@ -78,12 +78,12 @@ public class PolynomialImpl implements Polynomial {
   }
 
   @Override
-  public Polynomial add(Polynomial otherPoly) throws IllegalArgumentException {
+  public IPolynomial add(IPolynomial otherPoly) throws IllegalArgumentException {
     String thisFunct = toString();
     //System.out.println("Created calling function string: " + thisFunct);
     String otherFunct = otherPoly.toString();
     //System.out.println("Created insertion function string: " + otherFunct);
-    PolynomialImpl newPoly = new PolynomialImpl(thisFunct.concat(otherFunct));
+    IPolynomialImpl newPoly = new IPolynomialImpl(thisFunct.concat(otherFunct));
     //System.out.println("Created combined string: " + newPoly);
 
     return newPoly;

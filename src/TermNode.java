@@ -1,13 +1,11 @@
-package polynomial;
-
 /**
  * The Class used to represent a term in the polynomial Node Class.
  * Contains two fields coefficient and power.
  */
-public class TermNode implements Polynomial {
+public class TermNode implements IPolynomial {
   private double coefficient;
   private int power;
-  private Polynomial rest;
+  private IPolynomial rest;
 
   /**
    * Constructor for Term.
@@ -15,7 +13,7 @@ public class TermNode implements Polynomial {
    * @param coefficient the coefficient of the term.
    * @param power       the power of the term.
    */
-  public TermNode(double coefficient, int power, Polynomial rest) {
+  public TermNode(double coefficient, int power, IPolynomial rest) {
     this.coefficient = coefficient;
     this.power = power;
     this.rest = rest;
@@ -26,7 +24,7 @@ public class TermNode implements Polynomial {
   }
 
   @Override
-  public Polynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
+  public IPolynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
     //System.out.println("Power being passed is: " + power);
     //System.out.println("Current node degree: " + this.getDegree());
     //System.out.println("Current rest degree: " + rest.getDegree());
@@ -65,12 +63,12 @@ public class TermNode implements Polynomial {
    * @param spot        polynomial that represents rest of chain.
    * @return a new TermNode with given power and coefficient.
    */
-  private Polynomial addFunction(double coefficient, int power, Polynomial spot) {
+  private IPolynomial addFunction(double coefficient, int power, IPolynomial spot) {
     return new TermNode(coefficient, power, spot);
   }
 
   @Override
-  public Polynomial removeTerm(int power) {
+  public IPolynomial removeTerm(int power) {
     if (this.getDegree() == power) {
       return this.rest;
     } else {
@@ -110,7 +108,7 @@ public class TermNode implements Polynomial {
   }
 
   @Override
-  public Polynomial add(Polynomial otherPoly) throws IllegalArgumentException {
+  public IPolynomial add(IPolynomial otherPoly) throws IllegalArgumentException {
     return this;
 
   }

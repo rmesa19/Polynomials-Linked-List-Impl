@@ -1,12 +1,10 @@
-package polynomial;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PolynomialImplTest {
+public class IPolynomialImplTest {
 
-  PolynomialImpl myList = new PolynomialImpl();
+  IPolynomialImpl myList = new IPolynomialImpl();
 
 
   @Test(expected = IllegalArgumentException.class)
@@ -64,9 +62,9 @@ public class PolynomialImplTest {
   @Test(expected = IndexOutOfBoundsException.class)
   public void getCoefficient() {
 
-    PolynomialImpl otherList = new PolynomialImpl("-5x^1 -3x^2 2x^1 -7");
+    IPolynomialImpl otherList = new IPolynomialImpl("-5x^1 -3x^2 2x^1 -7");
     assertEquals(otherList.toString(), "-3.0x^2 -3.0x^1 -7.0");
-    PolynomialImpl nextList = new PolynomialImpl("-5x^1 3x^2 2x^1");
+    IPolynomialImpl nextList = new IPolynomialImpl("-5x^1 3x^2 2x^1");
     assertEquals(nextList.toString(), "3.0x^2 -3.0x^1 ");
     assertEquals(otherList.getCoefficient(2), -3.0, .01);
     assertEquals(otherList.getCoefficient(0), -7.0, .01);
@@ -91,7 +89,7 @@ public class PolynomialImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void add() throws IllegalArgumentException {
 
-    PolynomialImpl otherList = new PolynomialImpl("-5x^1 -3x^2 2x^1 4x^8 3x^-5");
+    IPolynomialImpl otherList = new IPolynomialImpl("-5x^1 -3x^2 2x^1 4x^8 3x^-5");
     System.out.println(myList.add(otherList).toString());
     myList.addTerm(5, -1);
     myList.addTerm(5, 2);

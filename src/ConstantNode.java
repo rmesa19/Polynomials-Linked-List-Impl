@@ -1,10 +1,8 @@
-package polynomial;
-
 /**
  * The Class used to represent a constant in the polynomial Node Class.
  * Contains constant field.
  */
-public class ConstantNode implements Polynomial {
+public class ConstantNode implements IPolynomial {
 
   private double constant;
 
@@ -25,7 +23,7 @@ public class ConstantNode implements Polynomial {
    * @throws IllegalArgumentException if power is negative.
    */
   @Override
-  public Polynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
+  public IPolynomial addTerm(double coefficient, int power) throws IllegalArgumentException {
     if (power < 0) {
       throw new IllegalArgumentException("Power cannot be less than zero");
     } else if (power == 0) {
@@ -42,12 +40,12 @@ public class ConstantNode implements Polynomial {
     return this;
   }
 
-  private Polynomial addFunction(double coefficient, int power, Polynomial spot) {
+  private IPolynomial addFunction(double coefficient, int power, IPolynomial spot) {
     return new TermNode(coefficient, power, this);
   }
 
   @Override
-  public Polynomial removeTerm(int power) {
+  public IPolynomial removeTerm(int power) {
     if (power == 0) {
       this.constant = 0;
       return this;
@@ -73,7 +71,7 @@ public class ConstantNode implements Polynomial {
   }
 
   @Override
-  public Polynomial add(Polynomial otherPoly) throws IllegalArgumentException {
+  public IPolynomial add(IPolynomial otherPoly) throws IllegalArgumentException {
     return this;
   }
 
